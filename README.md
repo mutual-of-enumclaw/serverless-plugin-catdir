@@ -1,4 +1,4 @@
-# serverless-plugin-decouple
+# serverless-plugin-catdir
 Allows serverless stacks to import text from a file or multiple files which will import in a string format.  This plugin solves
 a problem when importing files with new lines that it maintains formatting.  This plugin also allows the user to remove
 
@@ -16,7 +16,7 @@ npm install serverless-plugin-catdir
 Add the decouple plugin to your plugins, and add a custom variable to turn it on
 ```yaml
 plugins:
-    - serverless-plugin-decouple
+    - serverless-plugin-catdir
 
 custom:
     fileContent: "#catdir(./path/to/file.txt)"
