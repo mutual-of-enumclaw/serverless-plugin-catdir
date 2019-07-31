@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const glob = require("glob-fs")({ gitignore: true });
+const glob = require("glob");
 
 class ServerlessPlugin {
     constructor(serverless, options) {
@@ -36,7 +36,7 @@ class ServerlessPlugin {
                 this.serverless.cli.log('dirName:' + dirName);
                 let output = '';
                 if(dirName.indexOf('*') >= 0 || fs.lstatSync(dirName).isDirectory()) {
-                    let files = glob.readdirSync(dirName, {});
+                    let files = glob.sync(dirName, {});
                     let processedPaths = {};
                     this.serverless.cli.log('files:' + JSON.stringify(files));
                     for(let ii in files) {
