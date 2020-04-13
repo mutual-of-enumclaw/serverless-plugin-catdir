@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const glob = require("glob-fs")({ gitignore: true });
+const glob = require("glob");
 
 class ServerlessPlugin {
     constructor(serverless, options) {
@@ -19,7 +19,7 @@ class ServerlessPlugin {
     package() {
         this.serverless.cli.log(`Getting cloudformation`);
         let cft = JSON.stringify(this.serverless.service.provider.compiledCloudFormationTemplate);
-        let matches = cft.match(/\#catdir\([\.\-\Wa-zA-Z]*?\)/g);
+        let matches = cft.match(/\#catdir\([\.\-\_\Wa-zA-Z\@\/\,]+?\)/g);
         if(matches) {
             this.serverless.cli.log(`Retrieved matches ` + matches.length);
             for(let match in matches) {
@@ -36,7 +36,7 @@ class ServerlessPlugin {
                 this.serverless.cli.log('dirName:' + dirName);
                 let output = '';
                 if(dirName.indexOf('*') >= 0 || fs.lstatSync(dirName).isDirectory()) {
-                    let files = glob.readdirSync(dirName, {});
+                    let files = glob.sync(dirName, {});
                     let processedPaths = {};
                     this.serverless.cli.log('files:' + JSON.stringify(files));
                     for(let ii in files) {
