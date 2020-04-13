@@ -19,6 +19,6 @@
         "glob": "^7.1.4"
     },
     "devDependencies": {
-        "jest": "^24.8.0"
+        "jest": "^25.3.0"
     }
 }
