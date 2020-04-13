@@ -1,6 +1,6 @@
 {
     "name": "serverless-plugin-catdir",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "main": "src/index.js",
     "publisher": "Mutual of Enumclaw",
     "description": "Concatinates files in a directory and turns them into a string which can be used in serverless",
