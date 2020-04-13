@@ -11,9 +11,9 @@ phases:
       - echo Install Complete
   pre_build:
     commands:
-      - aws s3 cp $S3HomePath ~ --recursive
+      - if [ "$Validate" != "true" ] aws s3 cp $S3HomePath ~ --recursive
       - npm ci
   build:
     commands:
       - npm run test
-      - npm publish --access public
+      - if [ "$Validate" != "true" ] npm publish --access public
