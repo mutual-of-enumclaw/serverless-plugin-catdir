@@ -19,7 +19,7 @@ class ServerlessPlugin {
     package() {
         this.serverless.cli.log(`Getting cloudformation`);
         let cft = JSON.stringify(this.serverless.service.provider.compiledCloudFormationTemplate);
-        let matches = cft.match(/\#catdir\([\.\-\Wa-zA-Z]*?\)/g);
+        let matches = cft.match(/\#catdir\([\.\-\_\Wa-zA-Z\@\/\,]+?\)/g);
         if(matches) {
             this.serverless.cli.log(`Retrieved matches ` + matches.length);
             for(let match in matches) {
